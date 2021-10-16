@@ -10,4 +10,5 @@ class Blocks extends Model
     use HasFactory;
 
     protected $table = 'blocks';
+    protected $fillable = ['name', 'description', 'slug', 'enabled'];
 }

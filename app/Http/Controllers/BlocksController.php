@@ -34,7 +34,7 @@ class BlocksController extends Controller
         $block->enabled = $request->input('enabled');
 
         if($block->save()){
-            return new BlocksResource($block);
+            return (new BlocksResource($block))->response()->setStatusCode(201);
         }
     }
 
@@ -46,8 +46,9 @@ class BlocksController extends Controller
      */
     public function show($id)
     {
-        $blocks = Artigo::findOrFail($id);
-        return new BlocksResource($blocks);
+        $blocks = Blocks::findOrFail($id);
+
+        return (new BlocksResource($blocks))->response()->setStatusCode(200);
     }
 
     /**
@@ -59,7 +60,15 @@ class BlocksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $block = Blocks::findOrFail($request->id);
+
+        $block->name = $request->input('name');
+        $block->description = $request->input('description');
+        $block->slug = $request->input('slug');
+        $block->enabled = $request->input('enabled');
+
+        if($block->save())
+            return (new BlocksResource($block))->response()->setStatusCode(200);
     }
 
     /**
@@ -71,8 +80,8 @@ class BlocksController extends Controller
     public function destroy($id)
     {
         $block = Blocks::findOrFail($id);
-        if( $block->delete() ){
-            return new BlocksResource($block);
-        }
+
+        if($block->delete())
+            return (new BlocksResource($block))->response()->setStatusCode(200);
     }
 }
