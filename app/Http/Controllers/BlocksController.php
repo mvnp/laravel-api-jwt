@@ -62,10 +62,10 @@ class BlocksController extends Controller
     {
         $block = Blocks::findOrFail($request->id);
 
-        $block->name = $request->input('name');
-        $block->description = $request->input('description');
-        $block->slug = $request->input('slug');
-        $block->enabled = $request->input('enabled');
+        if($request->input('name')) $block->name = $request->input('name');
+        if($request->input('description')) $block->description = $request->input('description');
+        if($request->input('slug')) $block->slug = $request->input('slug');
+        if($request->input('enabled')) $block->enabled = $request->input('enabled');
 
         if($block->save())
             return (new BlocksResource($block))->response()->setStatusCode(200);
