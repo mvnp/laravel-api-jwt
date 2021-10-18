@@ -16,7 +16,10 @@ class BlocksController extends Controller
     public function index()
     {
         $blocks = Blocks::all();
-        return BlocksResource::collection($blocks);
+
+        if(count($blocks) > 0)
+            return BlocksResource::collection($blocks);
+        return response()->json(['message' => 'No Content!'], 404);
     }
 
     /**
@@ -33,9 +36,8 @@ class BlocksController extends Controller
         $block->slug = $request->input('slug');
         $block->enabled = $request->input('enabled');
 
-        if($block->save()){
+        if($block->save())
             return (new BlocksResource($block))->response()->setStatusCode(201);
-        }
     }
 
     /**
@@ -46,9 +48,11 @@ class BlocksController extends Controller
      */
     public function show($id)
     {
-        $blocks = Blocks::findOrFail($id);
+        $blocks = Blocks::find($id);
 
-        return (new BlocksResource($blocks))->response()->setStatusCode(200);
+        if($blocks != NULL)
+            return (new BlocksResource($blocks))->response()->setStatusCode(200);
+        return response()->json(['message' => 'No Content!'], 404);
     }
 
     /**
@@ -65,7 +69,7 @@ class BlocksController extends Controller
         if($request->input('name')) $block->name = $request->input('name');
         if($request->input('description')) $block->description = $request->input('description');
         if($request->input('slug')) $block->slug = $request->input('slug');
-        if($request->input('enabled')) $block->enabled = $request->input('enabled');
+        if($request->input('enabled') != NULL) $block->enabled = $request->input('enabled');
 
         if($block->save())
             return (new BlocksResource($block))->response()->setStatusCode(200);
