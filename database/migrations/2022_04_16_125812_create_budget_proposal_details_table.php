@@ -19,7 +19,9 @@ class CreateBudgetProposalDetailsTable extends Migration
             $table->string('type');
             $table->string('size_of_type');
             $table->double('qty_of_type', 8, 2);
+            $table->double('total_per_unity', 8, 2);
             $table->double('total_amount', 8, 2);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
