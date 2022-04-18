@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepartmentServicesTable extends Migration
+class CreateProjectDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDepartmentServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('department_services', function (Blueprint $table) {
+        Schema::create('project_departments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('department_id')->constrained();
             $table->text('description');
+            $table->integer('order');
             $table->integer('percent');
-            $table->boolean('is_active');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateDepartmentServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('department_services');
+        Schema::dropIfExists('project_departments');
     }
 }

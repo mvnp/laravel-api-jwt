@@ -26,7 +26,8 @@ class CreateProjectsTable extends Migration
             $table->string('type');
             $table->dateTime('started_at');
             $table->dateTime('ended_at');
-            $table->boolean('is_active');
+            $table->boolean('is_public')->default(false);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

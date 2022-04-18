@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DepartmentService;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class DepartmentServiceController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class DepartmentServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DepartmentService  $departmentService
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(DepartmentService $departmentService)
+    public function show(Product $product)
     {
         //
     }
@@ -52,10 +52,10 @@ class DepartmentServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DepartmentService  $departmentService
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(DepartmentService $departmentService)
+    public function edit(Product $product)
     {
         //
     }
@@ -64,10 +64,10 @@ class DepartmentServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DepartmentService  $departmentService
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DepartmentService $departmentService)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -75,10 +75,10 @@ class DepartmentServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DepartmentService  $departmentService
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DepartmentService $departmentService)
+    public function destroy(Product $product)
     {
         //
     }
